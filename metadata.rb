@@ -1,0 +1,7 @@
+name             'js-opencv'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures js-opencv'
+long_description 'Installs/Configures js-opencv'
+version          '0.1.0'
