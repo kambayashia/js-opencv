@@ -30,7 +30,7 @@ $ vagrant plugin install vagrant-berkshelf
 $ vagrant up
 
 ### 確認
-http:localhost:8081にアクセス
+http://localhost:8081 にアクセス
 
 ## License and Authors
 
