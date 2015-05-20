@@ -1,0 +1,11 @@
+server {
+  listen   <%= node['nginx']['face_js']['port'] -%>;
+  server_name  <%= node['hostname'] %>;
+
+  access_log  <%= node['nginx']['log_dir'] %>/localhost.access.log;
+
+  location / {
+    root   <%= node['nginx']['face_js']['document_root'] %>;
+    index  index.html index.htm;
+  }
+}

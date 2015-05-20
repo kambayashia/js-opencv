@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   config.vm.network :private_network, type: 'dhcp'
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 8081, host: 8081 # face-js
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -43,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "./app", "/vagrant_data", type: "nfs"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -80,11 +83,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         server_root_password: 'rootpass',
         server_debian_password: 'debpass',
         server_repl_password: 'replpass'
-      }
+      },
+      nginx: {
+        face_js: {
+          document_root: "/vagrant_data",
+          port: 8081,
+        },
+      },
     }
-
+    
     chef.run_list = [
-      'recipe[js-opencv::default]'
+      'apt',
+    
+      'nginx',
+      'js-opencv::default',
     ]
   end
 end
