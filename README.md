@@ -1,42 +1,37 @@
-# js-opencv-cookbook
-
-TODO: Enter the cookbook description here.
-
-## Supported Platforms
-
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['js-opencv']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
 ## Usage
 
-### js-opencv::default
+### How do I get set up? ###
+#### インストール
+- virtualbox 4.3.26以上
+- vagrant 1.7.2以上
+- chefdk 0.4以上
+- ruby 2.2.1以上
 
-Include `js-opencv` in your node's `run_list`:
+#### chefdkパス設定
 
-```json
-{
-  "run_list": [
-    "recipe[js-opencv::default]"
-  ]
-}
 ```
+#!shell
+
+$ echo "export PATH=/opt/chefdk/bin:\$PATH" >> ~/.bashrc
+$ cat ~/.bashrc
+
+export PATH=/opt/chefdk/bin:$PATH
+$ . ~/.bashrc
+```
+
+#### vagrant pluginインストール
+```
+#!shell
+$ vagrant plugin install vagrant-omnibus
+$ vagrant plugin install vagrant-berkshelf
+```
+
+### VM構築
+$ vagrant up
+
+### 確認
+http:localhost:8081にアクセス
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: kambayashia (kambayashia@gmail.com)
